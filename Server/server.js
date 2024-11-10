@@ -8,7 +8,6 @@ import errorHandler from "./src/helpers/errorhandler.js";
 
 dotenv.config();
 
-
 const port = process.env.PORT || 8000;
 
 const app = express();
@@ -49,7 +48,7 @@ const server = async () => {
       console.log(`Server is running on port ${port}`);
     });
   } catch (error) {
-    console.log("Failed to strt server.....", error.message);
+    console.log("Failed to start server.....", error.message);
     process.exit(1);
   }
 };
