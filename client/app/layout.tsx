@@ -4,7 +4,11 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import  UserProvider  from "../providers/UserProvider";
 import {Inter} from "next/font/google"
-
+import MiniSidebar from "./Components/MiniSidebar/MiniSidebar"
+import Header from "./Components/Header/Header"
+import MainContentLayout from "@/providers/MainContentLayout";
+import SideBarProvider from "../providers/SideBarProvider"
+import MainLayout from "@/providers/MainLayout";
 const inter =Inter({
   subsets:["latin"],
 })
@@ -27,8 +31,17 @@ export default function RootLayout({
       >
         <UserProvider>
        <Toaster position="top-center"/>
-       <div className="h-full flex overflow-hidden">{children}</div>
-        
+       <div className="h-full flex overflow-hidden">
+        <MiniSidebar/>
+          <div className="flex-1 flex flex-col">
+            <Header/>
+            <MainContentLayout>
+             <MainLayout>{children}</MainLayout> 
+             <SideBarProvider/>
+            </MainContentLayout>
+          </div>
+        </div>
+      
       </UserProvider>
       </body>
     </html>
